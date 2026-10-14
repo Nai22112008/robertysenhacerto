@@ -1,0 +1,401 @@
+/* --- Reset & Fontes --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #050505;
+    color: #f4f4f5;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Fundo Decorativo & Imagens Gamer Expandidas --- */
+.fundo-decorativo {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.card-imagem {
+    position: absolute;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 2px solid rgba(239, 68, 68, 0.7);
+    box-shadow: 0 0 35px rgba(220, 38, 38, 0.4), 0 25px 50px rgba(0, 0, 0, 0.95);
+    opacity: 0.85; /* Imagens bem mais visíveis */
+    transition: transform 0.3s ease;
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.15) 0%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+/* Tamanhos amplificados para preencher bem o espaço em volta */
+.pos-top-left {
+    top: -40px;
+    left: -40px;
+    width: 420px;
+    height: 380px;
+}
+
+.pos-top-right {
+    top: -40px;
+    right: -40px;
+    width: 440px;
+    height: 400px;
+}
+
+.pos-bottom-left {
+    bottom: -40px;
+    left: -40px;
+    width: 440px;
+    height: 400px;
+}
+
+.pos-bottom-right {
+    bottom: -40px;
+    right: -40px;
+    width: 420px;
+    height: 380px;
+}
+
+/* Ícones / Desenhos Flutuantes Aumentados */
+.icon-game {
+    position: absolute;
+    color: rgba(239, 68, 68, 0.45);
+    font-size: 60px;
+    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.6));
+}
+
+.pos-icon-1 { top: 42%; left: 3%; }
+.pos-icon-2 { top: 42%; right: 3%; }
+.pos-icon-3 { bottom: 12%; left: 28%; }
+.pos-icon-4 { top: 12%; right: 28%; }
+
+/* --- Container Principal --- */
+.container-principal {
+    max-width: 680px;
+    width: 100%;
+    background: rgba(12, 12, 14, 0.94);
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(220, 38, 38, 0.6);
+    border-radius: 28px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
+}
+
+/* Cabeçalho */
+.cabecalho {
+    text-align: center;
+}
+
+.icone-cabecalho {
+    width: 72px;
+    height: 72px;
+    background: rgba(220, 38, 38, 0.2);
+    border: 2px solid rgba(220, 38, 38, 0.5);
+    border-radius: 20px;
+    color: #ef4444;
+    font-size: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.cabecalho h1 {
+    font-size: 34px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #ef4444, #f87171, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cabecalho p {
+    color: #a1a1aa;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Caixa de Senha */
+.caixa-senha {
+    background: #000000;
+    border: 2px solid rgba(220, 38, 38, 0.7);
+    border-radius: 18px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.caixa-senha:hover {
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+#passwordOutput {
+    font-family: monospace;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ef4444;
+    letter-spacing: 1.5px;
+    word-break: break-all;
+    user-select: all;
+    -webkit-user-select: all;
+}
+
+#btnCopiar {
+    background: #dc2626;
+    color: #ffffff;
+    border: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 4px 18px rgba(220, 38, 38, 0.5);
+}
+
+#btnCopiar:hover {
+    background: #ef4444;
+    transform: scale(1.05);
+}
+
+#btnCopiar:active {
+    transform: scale(0.95);
+}
+
+/* Painel de Opções */
+.painel-opcoes {
+    background: rgba(24, 24, 27, 0.85);
+    border: 1px solid #3f3f46;
+    border-radius: 20px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo-grupo label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f87171;
+    margin-bottom: 8px;
+}
+
+.campo-grupo input[type="text"] {
+    width: 100%;
+    background: #000000;
+    border: 1px solid #3f3f46;
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: #f4f4f5;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo-grupo input[type="text"]:focus {
+    border-color: #ef4444;
+}
+
+.grade-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.item-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #3f3f46;
+    padding: 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #d4d4d8;
+    user-select: none;
+    transition: border-color 0.2s;
+}
+
+.item-check:hover {
+    border-color: #ef4444;
+}
+
+.item-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #dc2626;
+    cursor: pointer;
+}
+
+/* Botão Gerar */
+#generateBtn {
+    background: linear-gradient(135deg, #b91c1c, #dc2626, #b91c1c);
+    color: #ffffff;
+    border: none;
+    padding: 20px;
+    border-radius: 18px;
+    font-size: 19px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.5);
+    transition: all 0.2s;
+}
+
+#generateBtn:hover {
+    background: linear-gradient(135deg, #dc2626, #ef4444, #dc2626);
+    transform: translateY(-2deg);
+}
+
+#generateBtn:active {
+    transform: scale(0.98);
+}
+
+/* Rodapé / Status */
+.rodape-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #27272a;
+    font-size: 13px;
+    color: #a1a1aa;
+}
+
+.status-forte { color: #34d399; font-weight: bold; }
+.status-boa { color: #f87171; font-weight: bold; }
+.status-medio { color: #fbbf24; font-weight: bold; }
+
+.tag-player {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #ef4444;
+    font-weight: bold;
+}
+
+/* --- Animações --- */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes floatDelayed {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(-3deg); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(14px) rotate(-2deg); }
+}
+
+@keyframes cardEntrance {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes passwordPop {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    50% { transform: scale(1.04); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulseGlowRed {
+    0%, 100% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.25); }
+    50% { box-shadow: 0 0 60px rgba(220, 38, 38, 0.5); }
+}
+
+.float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.float-delayed { animation: floatDelayed 7s ease-in-out 1s infinite; }
+.float-reverse { animation: floatReverse 8s ease-in-out 0.5s infinite; }
+.float-slow-delayed { animation: floatSlow 8s ease-in-out 2s infinite; }
+
+.animate-card { animation: cardEntrance 0.5s ease-out forwards; }
+.animated-glow { animation: pulseGlowRed 4s ease-in-out infinite; }
+
+.animate-pop {
+    display: inline-block;
+    animation: passwordPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .card-imagem {
+        width: 280px;
+        height: 260px;
+        opacity: 0.65;
+    }
+}
+
+@media (max-width: 640px) {
+    .container-principal {
+        padding: 24px;
+    }
+    
+    .grade-checks {
+        grid-template-columns: 1fr;
+    }
+
+    #passwordOutput {
+        font-size: 20px;
+    }
+
+    .card-imagem {
+        width: 200px;
+        height: 200px;
+        opacity: 0.5;
+    }
+
+    .icon-game {
+        font-size: 36px;
+    }
+}
